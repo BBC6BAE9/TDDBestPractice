@@ -130,13 +130,13 @@
     if (rangeX == 0 & rangeY == 0) {
         return NO;
     }else if (curDirection == DIREDRTION_E) {
-        return (curPosition.x < rangeX);
+        return (curPosition.x < rangeX - 1);
     }else if (curDirection == DIREDRTION_W) {
         return (curPosition.x > 0);
     }else if (curDirection == DIREDRTION_N) {
         return (curPosition.y > 0);
     }else{
-        return (curPosition.y < rangeY);
+        return (curPosition.y < rangeY - 1);
     }
 }
 

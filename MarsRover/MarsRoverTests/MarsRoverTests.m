@@ -43,6 +43,16 @@
         XCTAssertTrue(info.direction == DIREDRTION_S);
     }
     
+    {
+        Position startPosition = {0, 0};
+        DIREDRTION startDirection = DIREDRTION_S;
+        SpatialInfo info = [rover runCmds:@"MMMMMMMMMMMMMMMMMMMMMMMLR" stratPosition:startPosition startDirection:startDirection rangeX:5 rangeY:5];
+        XCTAssertTrue(info.position.x == 0);
+        XCTAssertTrue(info.position.y == 4);
+        XCTAssertTrue(info.direction == DIREDRTION_S);
+        
+    }
+    
 }
 
 -(void)testTurn{

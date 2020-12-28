@@ -17,6 +17,7 @@
 		63E82DF22598AEC30092CF76 /* MarsRoverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E82DF12598AEC30092CF76 /* MarsRoverTests.m */; };
 		63E82E0F2598AF120092CF76 /* MarsRover.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E82E0E2598AF120092CF76 /* MarsRover.m */; };
 		63E82E2E2599A8210092CF76 /* NSString+Cmd.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E82E2D2599A8210092CF76 /* NSString+Cmd.m */; };
+		63E82E3E259A32DF0092CF76 /* DropArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E82E3D259A32DF0092CF76 /* DropArea.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		63E82E282598BE070092CF76 /* MarsBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarsBridge.h; sourceTree = "<group>"; };
 		63E82E2C2599A8210092CF76 /* NSString+Cmd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Cmd.h"; sourceTree = "<group>"; };
 		63E82E2D2599A8210092CF76 /* NSString+Cmd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Cmd.m"; sourceTree = "<group>"; };
+		63E82E3C259A32DF0092CF76 /* DropArea.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DropArea.h; sourceTree = "<group>"; };
+		63E82E3D259A32DF0092CF76 /* DropArea.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DropArea.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +101,8 @@
 				63E82DD92598AEC30092CF76 /* SceneDelegate.m */,
 				63E82DDB2598AEC30092CF76 /* ViewController.h */,
 				63E82DDC2598AEC30092CF76 /* ViewController.m */,
+				63E82E3C259A32DF0092CF76 /* DropArea.h */,
+				63E82E3D259A32DF0092CF76 /* DropArea.m */,
 				63E82E1B2598B5430092CF76 /* MarsHeader.h */,
 				63E82E2C2599A8210092CF76 /* NSString+Cmd.h */,
 				63E82E2D2599A8210092CF76 /* NSString+Cmd.m */,
@@ -223,6 +228,7 @@
 			files = (
 				63E82E0F2598AF120092CF76 /* MarsRover.m in Sources */,
 				63E82DDD2598AEC30092CF76 /* ViewController.m in Sources */,
+				63E82E3E259A32DF0092CF76 /* DropArea.m in Sources */,
 				63E82DD72598AEC30092CF76 /* AppDelegate.m in Sources */,
 				63E82DE82598AEC30092CF76 /* main.m in Sources */,
 				63E82E2E2599A8210092CF76 /* NSString+Cmd.m in Sources */,

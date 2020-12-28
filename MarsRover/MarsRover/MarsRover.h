@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MarsRover : NSObject
 
+- (SpatialInfo)runCmds:(NSString *)cmdStr stratPosition:(Position)startPosition startDirection:(DIREDRTION)startDirection rangeX:(int)rangeX rangeY:(int)rangeY;
+
 @end
 
 NS_ASSUME_NONNULL_END
