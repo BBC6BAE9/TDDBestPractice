@@ -8,6 +8,10 @@
 #ifndef MarsHeader_h
 #define MarsHeader_h
 
+//强弱引用
+#define kWeakSelf(type)  __weak typeof(type) weak##type = type;
+#define kStrongSelf(type) __strong typeof(type) type = weak##type;
+
 typedef enum DIREDRTION {
     DIREDRTION_N  = 0, // 北
     DIREDRTION_E, // 东

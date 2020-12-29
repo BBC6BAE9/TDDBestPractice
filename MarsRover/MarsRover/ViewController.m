@@ -33,8 +33,15 @@
     Position startPosition = {0, 0};
     DIREDRTION startDirection = DIREDRTION_S;
     MarsRover *rover = [[MarsRover alloc] init];
-    SpatialInfo info = [rover runCmds:@"MMMMMMMMMMMMMMMMMMMMMMMLR" stratPosition:startPosition startDirection:startDirection rangeX:map_x rangeY:map_y];
-    area.curPoint = info.position;
+    area.curDirection = startDirection;
+    area.curPoint = startPosition;
+    kWeakSelf(area)
+    [rover runCmds:@"MMMMLMMMMMLMMLMMRMMLMML" stratPosition:startPosition startDirection:startDirection rangeX:map_x rangeY:map_y block:^(SpatialInfo info) {
+        weakarea.curPoint = info.position;
+        weakarea.curDirection = info.direction;
+        NSLog(@"------%d", info.position.x);
+        NSLog(@"------%d", info.position.y);
+    }];
     
 }
 

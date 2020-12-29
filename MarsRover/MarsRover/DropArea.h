@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 火星车当前位置
 @property(nonatomic, assign)Position curPoint;
+@property(nonatomic, assign)DIREDRTION curDirection;
 
 - (instancetype)initWithX:(int)x Y:(int)y;
 

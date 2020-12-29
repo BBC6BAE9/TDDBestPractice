@@ -55,27 +55,31 @@
 //    return  -1;
 //}
 
-- (SpatialInfo)runCmds:(NSString *)cmdStr stratPosition:(Position)startPosition startDirection:(DIREDRTION)startDirection rangeX:(int)rangeX rangeY:(int)rangeY{
-    
+- (SpatialInfo)runCmds:(NSString *)cmdStr stratPosition:(Position)startPosition startDirection:(DIREDRTION)startDirection rangeX:(int)rangeX rangeY:(int)rangeY block:(void (^)(SpatialInfo info))block{
+
     NSArray *cmdArr = [cmdStr splitCmds];
     DIREDRTION curDirection = startDirection;
     Position curPosition = startPosition;
     for (NSString *cmd in cmdArr) {
         if (!([cmd isEqualToString:@"L"] || [cmd isEqualToString:@"R"] || [cmd isEqualToString:@"M"])) {
             SpatialInfo startInfo = {startPosition, startDirection};
-            return startInfo;
+            block(startInfo);
         }
         if ([cmd isEqualToString:@"L"] || [cmd isEqualToString:@"R"]) {
             curDirection = [self turn:cmd curDirection:curDirection];
+            SpatialInfo thisTimeInfo = {curPosition, curDirection};
+            block(thisTimeInfo);
         }
         if ([cmd isEqualToString:@"M"]) {
             curPosition = [self forwardCurDirection:curDirection curPosition:curPosition rangX:rangeX rangeY:rangeY];
+            SpatialInfo thisTimeInfo = {curPosition, curDirection};
+            block(thisTimeInfo);
         }
+        
+//        sleep(1);
     }
-    
-    SpatialInfo spInfo = {curPosition, curDirection};
-    return spInfo;
-    
+    SpatialInfo finalInfo = {curPosition, curDirection};
+    return finalInfo;
 }
 
 /*

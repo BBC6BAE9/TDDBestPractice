@@ -11,7 +11,7 @@
 
 @interface MarsRover()
 
-- (SpatialInfo)runCmds:(NSString *)cmdStr stratPosition:(Position)startPosition startDirection:(DIREDRTION)startDirection rangeX:(int)rangeX rangeY:(int)rangeY;
+- (SpatialInfo)runCmds:(NSString *)cmdStr stratPosition:(Position)startPosition startDirection:(DIREDRTION)startDirection rangeX:(int)rangeX rangeY:(int)rangeY block:(void (^)(SpatialInfo info))block;
 
 - (DIREDRTION)turn:(NSString *)cmd curDirection:(DIREDRTION)curDirection;
 

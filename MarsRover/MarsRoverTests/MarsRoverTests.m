@@ -21,7 +21,7 @@
     {
         Position startPosition = {0, 0};
         DIREDRTION startDirection = DIREDRTION_S;
-        SpatialInfo info = [rover runCmds:@"MRMMLLLL" stratPosition:startPosition startDirection:startDirection rangeX:100 rangeY:100];
+        SpatialInfo info = [rover runCmds:@"MRMMLLLL" stratPosition:startPosition startDirection:startDirection rangeX:100 rangeY:100 block:nil];
         XCTAssertTrue(info.position.x == 0);
         XCTAssertTrue(info.position.y == 1);
         XCTAssertTrue(info.direction == DIREDRTION_W);
@@ -29,7 +29,8 @@
     {
         Position startPosition = {0, 0};
         DIREDRTION startDirection = DIREDRTION_S;
-        SpatialInfo info = [rover runCmds:@"MRMMLLLL" stratPosition:startPosition startDirection:startDirection rangeX:0 rangeY:0];
+        
+        SpatialInfo info = [rover runCmds:@"MRMMLLLL" stratPosition:startPosition startDirection:startDirection rangeX:0 rangeY:0 block:nil];
         XCTAssertTrue(info.position.x == 0);
         XCTAssertTrue(info.position.y == 0);
         XCTAssertTrue(info.direction == DIREDRTION_W);
@@ -37,7 +38,8 @@
     {
         Position startPosition = {0, 0};
         DIREDRTION startDirection = DIREDRTION_S;
-        SpatialInfo info = [rover runCmds:@"XXXXXXXX" stratPosition:startPosition startDirection:startDirection rangeX:0 rangeY:0];
+        
+        SpatialInfo info = [rover runCmds:@"XXXXXXXX" stratPosition:startPosition startDirection:startDirection rangeX:0 rangeY:0 block:nil];;
         XCTAssertTrue(info.position.x == 0);
         XCTAssertTrue(info.position.y == 0);
         XCTAssertTrue(info.direction == DIREDRTION_S);
@@ -46,7 +48,8 @@
     {
         Position startPosition = {0, 0};
         DIREDRTION startDirection = DIREDRTION_S;
-        SpatialInfo info = [rover runCmds:@"MMMMMMMMMMMMMMMMMMMMMMMLR" stratPosition:startPosition startDirection:startDirection rangeX:5 rangeY:5];
+        
+        SpatialInfo info = [rover runCmds:@"MMMMMMMMMMMMMMMMMMMMMMMLR" stratPosition:startPosition startDirection:startDirection rangeX:5 rangeY:5 block:nil];
         XCTAssertTrue(info.position.x == 0);
         XCTAssertTrue(info.position.y == 4);
         XCTAssertTrue(info.direction == DIREDRTION_S);

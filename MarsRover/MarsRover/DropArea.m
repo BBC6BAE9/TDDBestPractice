@@ -12,9 +12,10 @@
 @interface DropArea()
 
 @property(nonatomic, strong)NSMutableArray *views;
-@property(nonatomic, strong)UIImageView *marsRover;
+@property(nonatomic, strong)UILabel *marsRover;
 @property(nonatomic, assign)int x;
 @property(nonatomic, assign)int y;
+@property (nonatomic, strong) NSOperationQueue *opQueue;
 
 @end
 
@@ -38,8 +39,9 @@
             [self.views addObject:view];
         }
     }
-    UIImageView *marsRover = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SQUARE_WIDTH, SQUARE_WIDTH)];
-    marsRover.image = [UIImage imageNamed:@"mars_rover"];
+    UILabel *marsRover = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SQUARE_WIDTH, SQUARE_WIDTH)];
+    marsRover.textAlignment = NSTextAlignmentCenter;
+    marsRover.text = @"";
     self.marsRover = marsRover;
     [self addSubview:marsRover];
     marsRover.backgroundColor = [UIColor blueColor];
@@ -58,8 +60,63 @@
 
 -(void)setCurPoint:(Position)curPoint{
     
-    self.marsRover.frame = CGRectMake(curPoint.x * SQUARE_WIDTH, curPoint.y * SQUARE_WIDTH, SQUARE_WIDTH, SQUARE_WIDTH);
+    
+    NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [UIView animateWithDuration:1 animations:^{
+                self.marsRover.frame = CGRectMake(curPoint.x * SQUARE_WIDTH, curPoint.y * SQUARE_WIDTH, SQUARE_WIDTH, SQUARE_WIDTH);
+            } completion:^(BOOL finished) {
+                    
+            }];
+        });
+        sleep(1);
+      }];
+      [self.opQueue addOperation:op];
+    
+    
     
 }
 
+-(void)setCurDirection:(DIREDRTION)curDirection{
+    NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [UIView animateWithDuration:1 animations:^{
+                NSString *directionText = @"";
+                switch (curDirection) {
+                    case DIREDRTION_E:
+                        directionText = @"➡️";
+                        break;
+                    case DIREDRTION_S:
+                        directionText = @"⬇️";
+                        break;
+                    case DIREDRTION_W:
+                        directionText = @"⬅️";
+                        break;
+                    case DIREDRTION_N:
+                        directionText = @"⬆️";
+                        break;
+                        
+                    default:
+                        break;
+                }
+                self.marsRover.text = directionText;
+            } completion:^(BOOL finished) {
+                    
+            }];
+        });
+        sleep(1);
+      }];
+      [self.opQueue addOperation:op];
+}
+
+- (NSOperationQueue *)opQueue{
+    if (!_opQueue) {
+        _opQueue = [[NSOperationQueue alloc]init];
+        //设置为串行效果，按顺序执行
+        _opQueue.maxConcurrentOperationCount = 1;
+    }
+    return _opQueue;
+}
 @end
